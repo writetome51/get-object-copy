@@ -1,33 +1,34 @@
-# getProperty(property: string,  object): any
+# getObjectCopy(object): object
 
-Why would you use this to get a property value instead of simply writing  
-`object[property]` or `object.property` ?  
-Because this function allows `property` to be a string that can include dot notation  
-( i.e,  'property.subproperty.subsubproperty' ) .
-
-Note:  even if you are getting the value of an array item, here you need to use  
-dot-notation and not square braces.  
-Example:  if getting the first item of the first item of an array, write:  
-`getProperty('0.0', array);  // instead of array[0][0]`
+Returns independent copy of `object` with same prototype chain.  
+`object` can be class instance or literal object.  The copy will  
+contain all properties/methods, including inherited ones.
 
 ## Examples
 ```
-let officer = {name: {first: 'Tom', last: 'Arnold'}, rank: 'sergeant'};
-let lastName = getProperty('name.last', officer);
-// lastName === 'Arnold'
-
-let city = {
-	name: 'San Francisco', 
-	cityCouncil: {
-		members: [
-			{name: {first: 'Megan', last: 'Trainor'}, age: 26},
-			{name: {first: 'Justin', last: 'Bieber'}, age: 85}
-		]
+export class TestClass {
+	prop1 = 1;
+	prop2 = 2;
+	
+	doThis() {
+		return this.prop1 + this.prop2;
 	}
-};
+}
 
-let ageOfMeganTrainor = getProperty('cityCouncil.members.0.age',  city);
-// ageOfMeganTrainor === 26
+
+export class TestSubclass extends TestClass {
+	prop3 = this.prop1 + this.prop2; // 3
+	prop4 = this.prop1 + this.prop3; // 4
+}
+
+
+export class TestSubSubclass extends TestSubclass {
+}
+
+
+let objToModify = new TestSubSubclass();
+
+let obj: TestSubSubclass = getObjectCopy(objToModify);
 ```
 
 ## Installation

@@ -7,7 +7,6 @@ export class TestClass {
 	prop1 = 1;
 	prop2 = 2;
 
-
 	doThis() {
 		return this.prop1 + this.prop2;
 	}
