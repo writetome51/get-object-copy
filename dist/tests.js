@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("./index");
 var TestClass = /** @class */ (function () {
     function TestClass() {
+        this.prop0 = { propA: { propB: { propC: { propD: 'value' } } } };
         this.prop1 = 1;
         this.prop2 = 2;
     }
@@ -30,8 +31,7 @@ var TestSubclass = /** @class */ (function (_super) {
     __extends(TestSubclass, _super);
     function TestSubclass() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.prop3 = _this.prop1 + _this.prop2; // 3
-        _this.prop4 = _this.prop1 + _this.prop3; // 4
+        _this.prop3 = _this.doThis(); // 3
         return _this;
     }
     return TestSubclass;
@@ -45,25 +45,30 @@ var TestSubSubclass = /** @class */ (function (_super) {
     return TestSubSubclass;
 }(TestSubclass));
 exports.TestSubSubclass = TestSubSubclass;
-var objToModify = new TestSubSubclass();
-var obj = index_1.getObjectCopy(objToModify);
+var original = new TestSubSubclass();
+var copy = index_1.getObjectCopy(original);
 // Make sure copy is instanceof the most distant parent:
-if (obj instanceof TestClass)
+if (copy instanceof TestClass)
     console.log('test 1 passed');
 else
     console.log('test 1 FAILED');
 // Make sure copy is instanceof its immediate class:
-if (obj instanceof TestSubSubclass)
+if (copy instanceof TestSubSubclass)
     console.log('test 2 passed');
 else
     console.log('test 2 FAILED');
 // Make sure the copy is not just a reference to the original:
-if (obj === objToModify)
-    console.log('test 3 FAILED');
-else
+if (copy !== original)
     console.log('test 3 passed');
+else
+    console.log('test 3 FAILED');
 // Make sure it contains the inherited method:
-if (obj.doThis)
+if (copy.doThis && (copy.doThis() === copy.prop3))
     console.log('test 4 passed');
 else
     console.log('test 4 FAILED');
+// Make sure deeply nested properties are included in the copy:
+if (copy.prop0.propA.propB.propC.propD === 'value')
+    console.log('test 5 passed');
+else
+    console.log('test 5 FAILED');
