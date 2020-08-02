@@ -1,5 +1,6 @@
+import { getObjectCopy } from './index.js';
+
 // Make sure inherited properties can be overwritten and also be accessed in new methods.
-import { getObjectCopy } from './index';
 export class TestClass {
     constructor() {
         this.prop0 = { propA: { propB: { propC: { propD: 'value' } } } };
