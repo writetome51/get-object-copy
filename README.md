@@ -1,8 +1,7 @@
 # getObjectCopy(object): object
 
 Returns independent copy of `object` with same prototype chain.  
-`object` can be class instance or literal object.  The copy will  
-contain all properties/methods, including inherited ones.
+`object` can be class instance or literal object.
 
 ## Examples
 ```
@@ -54,13 +53,10 @@ else console.log('test 5 FAILED');
 You must have npm installed first.  Then, in the command line:
 
 ```bash
-npm install @writetome51/get-object-copy
+npm i @writetome51/get-object-copy
 ```
 
 ## Loading
-```
-// If using TypeScript:
+```js
 import {getObjectCopy} from '@writetome51/get-object-copy';
-// If using ES5 JavaScript:
-let getObjectCopy = require('@writetome51/get-object-copy').getObjectCopy;
 ```

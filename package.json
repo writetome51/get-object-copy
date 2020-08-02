@@ -1,6 +1,6 @@
 {
   "name": "@writetome51/get-object-copy",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Returns new identical copy of object, including same prototype chain",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,6 +30,6 @@
   "homepage": "https://github.com/writetome51/get-object-copy#readme",
   "devDependencies": {},
   "dependencies": {
-    "@writetome51/modify-object": "^1.0.0"
+    "@writetome51/modify-object": "^2.0.0"
   }
 }

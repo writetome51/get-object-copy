@@ -2,3 +2,5 @@ lib/
 .idea/
 tsconfig.json
 dist/tests.js
+tests.js
+
