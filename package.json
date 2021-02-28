@@ -1,9 +1,10 @@
 {
   "name": "@writetome51/get-object-copy",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Returns new identical copy of object, including same prototype chain",
   "type": "module",
   "main": "index.js",
+  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/writetome51/get-object-copy.git"

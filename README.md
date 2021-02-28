@@ -1,7 +1,6 @@
-# getObjectCopy(object): object
+# getObjectCopy\<T\>(object: T): T
 
-Returns independent copy of `object` with same prototype chain.  
-`object` can be class instance or literal object.
+Returns independent copy of `object`, with same prototype chain.
 
 ## Examples
 ```
